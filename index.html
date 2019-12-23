@@ -2,8 +2,7 @@
 
 <head>
     <meta charset="utf-8" />
-    <title>Airmash</title>
-    <link rel="stylesheet" type="text/css" href="flags/famfamfam-flags.css" />
+    <title>ΛIRBATTLE</title>
     <style type="text/css">
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -90,7 +89,7 @@
 
         #chat-input {
             top: 10;
-            width: 300px;
+            width: 350px;
             height: 60px;
             position: absolute;
             left: 10px;
@@ -132,12 +131,24 @@
             overflow: hidden;
             color: white;
         }
+
+        #player-list tr.playerlist-player-inactive td {
+            color: silver;
+        }
+        #player-list td.playerlist-name {
+            width: 200px;
+            max-width : 200px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
     </style>
 </head>
 
 <body style="overflow: hidden;">
     <!-- background map -->
     <img src="map-miller.png" id="map" style="display: none;" />
+    <img src="missile.png" id="missile" style="display: none;" />
     <!-- aircraft images used for rendering -->
     <img src="raptor.png" id="raptor" style="display: none" /><br />
     <img src="spirit.png" id="spirit" style="display: none" /><br />
@@ -232,7 +243,7 @@
             </tr>
         </table>
     </div>
-    <script src="browser-pack.js?v6"></script>
+    <script src="browser-pack.js?v7"></script>
 </body>
 
 </html>
