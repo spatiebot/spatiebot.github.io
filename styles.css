@@ -107,6 +107,29 @@ div#nameAndGame #games .game-name {
   font-weight: bold;
   color: white;
 }
+#server-message .flag {
+  display: inline-block;
+  width: 40px;
+  height: 45px;
+  margin-top: 20px;
+  margin-right: 5px;
+}
+#server-message .redflag {
+  display: inline-block;
+  width: 40px;
+  height: 45px;
+  margin-top: 20px;
+  margin-right: 5px;
+  background-image: url(red-flag.png);
+}
+#server-message .blueflag {
+  display: inline-block;
+  width: 40px;
+  height: 45px;
+  margin-top: 20px;
+  margin-right: 5px;
+  background-image: url(blue-flag.png);
+}
 #aircraftSelection img {
   transform: rotate(-30deg);
   width: 40px;
