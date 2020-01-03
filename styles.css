@@ -1,6 +1,7 @@
 body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   font-size: 10pt;
+  background-color: #36529e;
 }
 .contrast-with-background {
   color: white;
