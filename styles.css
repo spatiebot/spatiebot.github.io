@@ -9,17 +9,73 @@ body {
 .block-right {
   position: absolute;
   right: 10px;
-  text-align: right;
 }
 .block-left {
   position: absolute;
   left: 10px;
 }
-#stats,
-#upgradeSelection {
+.block-center {
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+.with-border {
+  border: 1px solid darkslategray;
+  background-color: rgba(100, 100, 150, 0.3);
+}
+.player-name {
+  cursor: pointer;
+}
+#player-context-menu {
+  position: absolute;
+  background-color: black;
+  color: white;
+  z-index: 100;
+}
+#player-context-menu #menu-title,
+#player-context-menu .menu-item {
+  padding-left: 20px;
+  padding-right: 20px;
+  border-bottom: 1px solid #222;
+  height: 24;
+  padding-top: 5px;
+}
+#player-context-menu .menu-item {
+  cursor: pointer;
+}
+#player-context-menu .menu-item:last-child {
+  border-bottom: none;
+}
+#player-context-menu .menu-item:hover {
+  background-color: #222;
+}
+#player-context-menu #menu-title {
+  background-color: #222;
+  cursor: default;
+  font-weight: bold;
+}
+#stats {
+  color: white;
+  position: absolute;
+  left: 10px;
   font-size: 14pt;
+  padding: 5px;
+  top: 300px;
+}
+#upgradeSelection {
+  position: absolute;
+  left: 10px;
+  font-size: 14pt;
+  width: 50px;
+  padding: 5px;
+  top: 440px;
 }
 #upgradeSelection div {
+  border: 1px solid darkslategray;
+  background-color: rgba(100, 100, 150, 0.3);
   width: 50px;
   height: 50px;
   margin-bottom: 5px;
@@ -28,17 +84,13 @@ body {
   line-height: 50px;
   user-select: none;
 }
-#drop-upgrade {
+#upgradeSelection #drop-upgrade {
   margin-top: 20px;
 }
-#drop-upgrade img {
+#upgradeSelection #drop-upgrade img {
   margin-top: 7px;
   width: 30px;
   height: auto;
-}
-.with-border {
-  border: 1px solid darkslategray;
-  background-color: rgba(100, 100, 150, 0.3);
 }
 div#nameAndGame {
   width: 600px;
@@ -79,13 +131,13 @@ div#nameAndGame #games .game-name {
 }
 #ctf-info {
   position: absolute;
-  width: 600px;
   left: 0;
   right: 0;
-  top: 30px;
   margin-left: auto;
   margin-right: auto;
   text-align: center;
+  width: 600px;
+  top: 30px;
   font-size: 14pt;
   color: white;
 }
@@ -97,13 +149,13 @@ div#nameAndGame #games .game-name {
 }
 #server-message {
   position: absolute;
-  width: 600px;
   left: 0;
   right: 0;
-  top: 230px;
   margin-left: auto;
   margin-right: auto;
   text-align: center;
+  width: 600px;
+  top: 230px;
   font-size: 20pt;
   font-weight: bold;
   color: white;
@@ -131,8 +183,15 @@ div#nameAndGame #games .game-name {
   margin-right: 5px;
   background-image: url(blue-flag.png);
 }
+#aircraftSelection {
+  position: absolute;
+  left: 10px;
+  width: 50px;
+  padding: 5px;
+  top: 10;
+}
 #aircraftSelection img {
-  transform: rotate(-30deg);
+  transform: rotate(30deg);
   width: 40px;
   height: auto;
   cursor: pointer;
@@ -144,56 +203,62 @@ div#nameAndGame #games .game-name {
 #aircraftSelection img#select-tornado {
   width: 42px;
 }
+#aircraftSelection img#select-mohawk {
+  width: 46px;
+}
 #aircraftSelection img#select-prowler {
   width: 46px;
 }
 #chat-input {
-  top: 10;
-  width: 350px;
-  height: 60px;
   position: absolute;
-  left: 10px;
+  right: 10px;
+  top: 10px;
+  width: calc(350px + 5px + 5px);
+  height: 20px;
+}
+#chat-input span {
+  color: white;
 }
 #chat {
   position: absolute;
-  left: 10px;
-  width: 350px;
+  right: 10px;
   height: 200px;
+  top: calc(10px + 20px);
+  width: 350px;
   padding: 5px;
   overflow: auto;
-  top: 30px;
   color: white;
   border: 1px solid darkslategray;
   background-color: rgba(100, 100, 150, 0.3);
 }
-.chat-team {
+#chat .chat-team {
   background-color: green;
 }
-.chat-whisper {
+#chat .chat-whisper {
   background-color: purple;
 }
-.chat-warning {
+#chat .chat-warning {
   background-color: darkred;
 }
 #minimap {
   position: absolute;
+  right: 10px;
   width: 400px;
   height: 200px;
   bottom: 0px;
-  left: 0px;
 }
 #minimap img {
   opacity: 0.5;
 }
 #player-list {
   position: absolute;
-  top: 270px;
-  width: 350px;
+  right: 10px;
+  right: -20px;
+  top: calc(calc(10px + 20px) + 200px + 50px);
+  width: calc(350px + 20px);
   /* height minus my top and minus minimap height and minus a margin of 20px*/
-  height: calc(100% - 270px - 200px - 20px);
-  left: 10px;
-  bottom: 250p;
-  overflow-y: hidden;
+  height: calc(100% - calc(calc(10px + 20px) + 200px + 50px) - 200px - 20px);
+  overflow-y: auto;
   overflow-x: hidden;
   color: white;
 }
