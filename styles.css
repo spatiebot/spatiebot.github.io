@@ -3,95 +3,7 @@ body {
   font-size: 10pt;
   background-color: #36529e;
 }
-.contrast-with-background {
-  color: white;
-}
-.block-right {
-  position: absolute;
-  right: 10px;
-}
-.block-left {
-  position: absolute;
-  left: 10px;
-}
-.block-center {
-  position: absolute;
-  left: 0;
-  right: 0;
-  margin-left: auto;
-  margin-right: auto;
-  text-align: center;
-}
-.with-border {
-  border: 1px solid darkslategray;
-  background-color: rgba(100, 100, 150, 0.3);
-}
-.player-name {
-  cursor: pointer;
-}
-#player-context-menu {
-  position: absolute;
-  background-color: black;
-  color: white;
-  z-index: 100;
-}
-#player-context-menu #menu-title,
-#player-context-menu .menu-item {
-  padding-left: 20px;
-  padding-right: 20px;
-  border-bottom: 1px solid #222;
-  height: 24;
-  padding-top: 5px;
-}
-#player-context-menu .menu-item {
-  cursor: pointer;
-}
-#player-context-menu .menu-item:last-child {
-  border-bottom: none;
-}
-#player-context-menu .menu-item:hover {
-  background-color: #222;
-}
-#player-context-menu #menu-title {
-  background-color: #222;
-  cursor: default;
-  font-weight: bold;
-}
-#stats {
-  color: white;
-  position: absolute;
-  left: 10px;
-  font-size: 14pt;
-  padding: 5px;
-  top: 300px;
-}
-#upgradeSelection {
-  position: absolute;
-  left: 10px;
-  font-size: 14pt;
-  width: 50px;
-  padding: 5px;
-  top: 440px;
-}
-#upgradeSelection div {
-  border: 1px solid darkslategray;
-  background-color: rgba(100, 100, 150, 0.3);
-  width: 50px;
-  height: 50px;
-  margin-bottom: 5px;
-  cursor: pointer;
-  text-align: center;
-  line-height: 50px;
-  user-select: none;
-}
-#upgradeSelection #drop-upgrade {
-  margin-top: 20px;
-}
-#upgradeSelection #drop-upgrade img {
-  margin-top: 7px;
-  width: 30px;
-  height: auto;
-}
+/* this is for the landing page */
 div#nameAndGame {
   width: 600px;
   height: 400px;
@@ -128,6 +40,100 @@ div#nameAndGame #games .num-players {
 }
 div#nameAndGame #games .game-name {
   width: 170px;
+}
+/* the rest are game styles */
+.block-right {
+  position: absolute;
+  right: 10px;
+}
+.block-left {
+  position: absolute;
+  left: 10px;
+}
+.block-center {
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+.player-name {
+  cursor: pointer;
+}
+#player-context-menu {
+  position: absolute;
+  background-color: black;
+  color: white;
+  z-index: 100;
+}
+#player-context-menu #menu-title,
+#player-context-menu .menu-item {
+  padding-left: 20px;
+  padding-right: 20px;
+  border-bottom: 1px solid #222;
+  height: 24;
+  padding-top: 5px;
+}
+#player-context-menu .menu-item {
+  cursor: pointer;
+}
+#player-context-menu .menu-item:last-child {
+  border-bottom: none;
+}
+#player-context-menu .menu-item:hover {
+  background-color: #222;
+}
+#player-context-menu #menu-title,
+#player-context-menu #menu {
+  background-color: #222;
+  cursor: default;
+  font-weight: bold;
+}
+#player-context-menu #menu-stats {
+  height: auto;
+  color: Silver;
+  padding-left: 40px;
+  cursor: default;
+}
+#player-context-menu #menu-stats:hover {
+  background-color: black;
+}
+#stats {
+  position: absolute;
+  left: 10px;
+  font-size: 14pt;
+  color: white;
+  padding: 5px;
+  top: 300px;
+}
+#upgradeSelection {
+  position: absolute;
+  left: 10px;
+  font-size: 14pt;
+  width: 50px;
+  padding: 5px;
+  top: 440px;
+}
+#upgradeSelection div {
+  border: 1px solid darkslategray;
+  background-color: rgba(100, 100, 150, 0.3);
+  color: white;
+  width: 50px;
+  height: 50px;
+  margin-bottom: 5px;
+  cursor: pointer;
+  text-align: center;
+  line-height: 50px;
+  user-select: none;
+}
+#upgradeSelection #drop-upgrade {
+  margin-top: 20px;
+}
+#upgradeSelection #drop-upgrade img {
+  margin-top: 7px;
+  width: 30px;
+  height: auto;
 }
 #ctf-info {
   position: absolute;
