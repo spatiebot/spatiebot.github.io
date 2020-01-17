@@ -1,0 +1,204 @@
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>ΛIMISH</title>
+    <link id="ui-styling" rel="stylesheet" type="text/css" href="styles/default/style.css?v=1579294906290" />
+</head>
+
+<body style="overflow: hidden;">
+    <div id="root" style="width: 100%; height: 100%">
+        <!-- background map -->
+        <img src="styles/default/map.png" id="map" style="display: none;" />
+        <img src="styles/default/rocket.png" id="missile" style="display: none;" />
+        <img src="styles/default/blue-flag.png" id="blue-flag" style="display: none;" />
+        <img src="styles/default/red-flag.png" id="red-flag" style="display: none;" />
+        <!-- aircraft images used for rendering -->
+        <img src="styles/default/raptor.png" id="raptor" style="display: none" />
+        <img src="styles/default/spirit.png" id="spirit" style="display: none" />
+        <img src="styles/default/mohawk.png" id="mohawk" style="display: none" />
+        <img src="styles/default/tornado.png" id="tornado" style="display: none" />
+        <img src="styles/default/prowler.png" id="prowler" style="display: none" />
+
+        <!-- images to render walls to mountains -->
+        <img src="styles/default/mountain-large.png" id="mountain-large" style="display: none;" />
+        <img src="styles/default/mountain-medium.png" id="mountain-medium" style="display: none;" />
+        <img src="styles/default/mountain-regular-a.png" id="mountain-regular-a" style="display: none;" />
+        <img src="styles/default/mountain-regular-b.png" id="mountain-regular-b" style="display: none;" />
+        <img src="styles/default/mountain-regular-c.png" id="mountain-regular-c" style="display: none;" />
+        <img src="styles/default/mountain-small.png" id="mountain-small" style="display: none;" />
+        <img src="styles/default/mountain-smaller.png" id="mountain-smaller" style="display: none;" />
+        <img src="styles/default/mountain-mini.png" id="mountain-mini" style="display: none;" />
+
+        <!-- canvas on which rendering takes place -->
+        <canvas id="canvas" style="position: absolute; left: 0; top: 0; z-index: 0;"></canvas>
+
+        <!-- chat box -->
+        <div id="chat-input" style="display: none;">
+            <span style="position: absolute;" id="input-instruction">Click here or type &lt;Enter&gt; to chat</span>
+            <input type="text" style="width: 100%; position: absolute;" id="chat-input-textbox" />
+        </div>
+        <div id="chat" style="display: none;">
+        </div>
+        <!-- player list -->
+        <table id="player-list" style="display: none;">
+
+        </table>
+        <!-- player context menu -->
+        <div id="player-context-menu" style="display: none;">
+            <div class="menu-item" id="menu-title">Player</div>
+            <div class="menu-item" id="menu-stats"></div>
+            <div class="menu-item" id="menu-whisper">Send private message</div>
+            <div class="menu-item" id="menu-locate">Locate on minimap</div>
+            <div class="menu-item" id="menu-flag">Copy flag</div>
+            <div class="menu-item" id="menu-ignore">Ignore</div>
+            <div class="menu-item" id="menu-unignore">Unignore</div>
+            <div class="menu-item" id="menu-votemute">Vote mute</div>
+        </div>
+
+        <!-- minimap -->
+        <div id="minimap" style="display: none">
+            <img src="styles/default/minimap.png" style="position: absolute; width: 100%; height: 100%;" />
+            <canvas id="minimap-canvas" style="position: absolute; width: 100%; height: 100%"></canvas>
+        </div>
+
+        <!-- CTF and server info -->
+        <div id="ctf-info" style="display: none;">
+            <span class="team-blue">Blue: </span>
+            <span class="team-blue" id="blue-score">0</span>
+            -
+            <span class="team-red">Red: </span>
+            <span class="team-red" id="red-score">0</span>
+            <br />
+            <span class="team-blue">Blue flag: </span>
+            <span class="team-blue" id="blue-flag-location">home</span>
+            -
+            <span class="team-red">Red flag: </span>
+            <span class="team-red" id="red-flag-location">home</span>
+        </div>
+        <div id="server-message" style="display: none">
+        </div>
+
+        <!-- aircraft selection -->
+        <div id="aircraftSelection" style="display: none;">
+            <img src="styles/default/raptor.png" id="select-raptor" title="F1" /><br />
+            <img src="styles/default/spirit.png" id="select-spirit" title="F2" /><br />
+            <img src="styles/default/mohawk.png" id="select-mohawk" title="F3" /><br />
+            <img src="styles/default/tornado.png" id="select-tornado" title="F4" /><br />
+            <img src="styles/default/prowler.png" id="select-prowler" title="F5" /><br />
+        </div>
+        <!-- stats -->
+        <div id="stats" style="display: none">
+            Score: <span id="stats-score">0</span><br />
+            Upgrades: <span id="stats-upgrades">0</span><br />
+            Kills: <span id="stats-kills">0</span><br />
+            Deaths: <span id="stats-deaths">0</span><br />
+            Ping: <span id="stats-ping">100</span><br />
+        </div>
+        <!-- upgrade selection -->
+        <div id="upgradeSelection" style="display: none">
+            <div id="select-speed" title="Speed upgrade (1)">S: <span id="stats-speed">0</span>
+            </div>
+            <div id="select-defense" title="Defense upgrade (2)">D: <span
+                    id="stats-defense">0</span>
+            </div>
+            <div id="select-energy" title="Energy regeneration upgrade (3)">E: <span
+                    id="stats-energy">0</span></div>
+            <div id="select-missile" title="Missile speed upgrade (4)">M: <span
+                    id="stats-missile">0</span></div>
+            <div id="drop-upgrade" title="Drop 1 upgrade (x)">
+                <img src="styles/default/drop-upgrades.png" />
+            </div>
+        </div>
+
+        <!-- game and name selection -->
+        <div id="nameAndGame">
+            <table>
+                <tr>
+                    <td>Name</td>
+                    <td><input id="playerName"></td>
+                </tr>
+                <tr>
+                    <td>Style</td>
+                    <td>
+                        <select id="styleSelect">
+                            <option value="no-bitmaps">No bitmaps</option>
+                            <option value="styles/default/" selected>Default</option>
+                            <option value="custom">Custom</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Zoom</td>
+                    <td>
+                        <select id="zoomSelect">
+                            <option value="0.4">0.4</option>
+                            <option value="0.6">0.6</option>
+                            <option value="0.8" selected="selected">0.8</option>
+                            <option value="1">No zoom</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2" id="externalLogin">Login to save your progress: <input type="button" value="Login" id="loginButton" /></td>
+                    
+                </tr>
+                <tr>
+                    <td colspan="2" id="games">
+
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <!-- overlay for making the login stuff modal-->
+        <div id="overlay" style="display: none;"></div>
+        <!-- login to external services-->
+        <div id="loginselector" style="display: none;">
+            <div class="desc">
+                Use any of the following services to sign in<br>
+                to save your account progress and<br>
+                achievements.
+            </div>
+            <div class="signinwith">
+                Sign in with
+            </div>
+            <div class="buttons">
+                <span class="loginbutton button microsoft" id="login-microsoft" data-provider="1">
+                    Microsoft
+                    <div class="icon"></div>
+                    <div class="spacer"></div>
+                </span>
+                <span class="loginbutton button google" id="login-google" data-provider="2">
+                    Google
+                    <div class="icon"></div>
+                    <div class="spacer"></div>
+                </span>
+                <span class="loginbutton button twitter" id="login-twitter" data-provider="3">
+                    Twitter
+                    <div class="icon"></div>
+                    <div class="spacer"></div>
+                </span>
+                <span class="loginbutton button reddit" id="login-reddit" data-provider="4">
+                    Reddit
+                    <div class="icon"></div>
+                    <div class="spacer"></div>
+                </span>
+                <span class="loginbutton button twitch" id="login-twitch" data-provider="5">
+                    Twitch
+                    <div class="icon"></div>
+                    <div class="spacer"></div>
+                </span>
+            </div>
+            <div class="disclaimer">
+                We only require the absolute minimum<br>
+                permission set that each platform provides.<br>
+                See our <a href='/privacy' target='_blank' rel=
+                'noopener'>Privacy Policy</a> for more.
+            </div>
+        </div>
+
+        <script src="browser-pack.js?v=1579294906290"></script>
+    </div>
+</body>
+
+</html>
