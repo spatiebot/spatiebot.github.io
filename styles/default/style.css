@@ -421,6 +421,15 @@ div#nameAndGame #games .game-name {
 #player-list td.playerlist-score {
   width: 120px;
 }
+#debugPanel {
+  position: absolute;
+  left: 10px;
+  bottom: 20px;
+  color: white;
+  border: 1px solid darkslategray;
+  background-color: rgba(100, 100, 150, 0.3);
+  padding: 20px;
+}
 canvas.shake-hit {
   animation: shake-hit 0.3s;
 }
