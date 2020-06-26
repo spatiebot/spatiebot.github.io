@@ -224,26 +224,17 @@ div#nameAndGame #games .game-name {
 #player-context-menu #menu-stats:hover {
   background-color: black;
 }
-#stats {
-  position: absolute;
-  left: 10px;
-  font-size: 14pt;
-  color: white;
-  padding: 5px;
-  top: 300px;
-}
 #upgradeSelection {
   position: absolute;
   left: 10px;
   font-size: 14pt;
   width: 50px;
-  padding: 5px;
-  top: 440px;
+  padding: 0px;
+  top: 320px;
 }
 #upgradeSelection div {
   border: 1px solid darkslategray;
   background-color: rgba(100, 100, 150, 0.3);
-  color: white;
   width: 50px;
   height: 50px;
   margin-bottom: 5px;
@@ -252,6 +243,23 @@ div#nameAndGame #games .game-name {
   line-height: 50px;
   user-select: none;
 }
+#upgradeSelection div:hover {
+  background-color: rgba(100, 100, 150, 0.6);
+}
+#upgradeSelection .stats-val {
+  color: white;
+  font-size: 24pt;
+  font-family: 'Courier New', Courier, monospace;
+  display: block;
+  margin-left: 15px;
+  margin-top: -15px;
+}
+#upgradeSelection i {
+  display: block;
+  margin-left: -23px;
+  margin-top: 5px;
+  color: #888888;
+}
 #upgradeSelection #drop-upgrade {
   margin-top: 20px;
 }
@@ -259,6 +267,29 @@ div#nameAndGame #games .game-name {
   margin-top: 7px;
   width: 30px;
   height: auto;
+}
+#actionButtons {
+  position: absolute;
+  left: 10px;
+  font-size: 10pt;
+  width: 50px;
+  padding: 0px;
+  top: 570px;
+}
+#actionButtons .button {
+  border: 1px solid darkslategray;
+  background-color: rgba(100, 100, 150, 0.3);
+  width: 150px;
+  height: 25px;
+  cursor: pointer;
+  user-select: none;
+  color: silver;
+  padding-top: 5px;
+  padding-left: 5px;
+  margin-bottom: 5px;
+}
+#actionButtons .button:hover {
+  background-color: rgba(100, 100, 150, 0.6);
 }
 #ctf-info {
   position: absolute;
@@ -277,6 +308,37 @@ div#nameAndGame #games .game-name {
 }
 #ctf-info .team-red {
   color: #f66;
+}
+#stats {
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  width: 350px;
+  top: 90px;
+  font-size: 12pt;
+  color: silver;
+}
+#stats #stats-row {
+  display: flex;
+}
+#stats #stats-row #stats-left {
+  flex: 50%;
+  text-align: right;
+  padding-right: 10px;
+  border-right: 1px solid Silver;
+}
+#stats #stats-row #stats-right {
+  flex: 50%;
+  text-align: left;
+  padding-left: 10px;
+}
+#stats #stats-row .stat-val {
+  color: white;
+  font-size: 14pt;
+  font-family: 'Courier New', Courier, monospace;
 }
 #server-message {
   position: absolute;
@@ -429,6 +491,7 @@ div#nameAndGame #games .game-name {
   border: 1px solid darkslategray;
   background-color: rgba(100, 100, 150, 0.3);
   padding: 20px;
+  white-space: pre;
 }
 canvas.shake-hit {
   animation: shake-hit 0.3s;
